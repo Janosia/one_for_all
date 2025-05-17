@@ -7,6 +7,7 @@ from thefuzz import fuzz
 
 class Menu:
    ''' 11 different functions containing checks for both server and client side configurations'''
+   #switch to subprocess 
    def cleardesk():
       '''Checks if desktop has any files/directories'''
       path = "/home" 
@@ -23,7 +24,9 @@ class Menu:
       '''
       Handling of echo packets in reply to any ICMP ping
       
-      - Path checked :  /etc/sysctl.conf'''
+      - Path checked :  /etc/sysctl.conf
+      
+      '''
       path = "/etc/sysctl.conf"
       try:
          with open(path, "r") as fobj:
@@ -41,7 +44,8 @@ class Menu:
          print ("File /etc/sysctl.conf not found") 
 
    def ipspoofing():
-      ''' Reverse Path Filtering (RPF) Settings details 
+      ''' 
+         Reverse Path Filtering (RPF) Settings details 
          
          RPF verifies that source IP address of a packet is reachable via the same interface through which it was received. 
          It does not allow attackers to forge IP Addresses. By verifying the reverse path, it ensures that packets are coming from legitimate sources and reduces the risk of accepting spoofed packets.
@@ -104,8 +108,10 @@ class Menu:
 
    def lightdm():
        ''' 
-         Remote Login in LightDM Daemon 
-       
+         Remote Login in (LightDM) Lightweight Display Manager 
+
+         LightDM is a display manager which was pre-installed in Ubuntu (till 17.04)
+
          In LightDM, "REMOTE LOGIN" option on login screen refers to use of Remote Desktop Protocol (RDP) or X11
          forwarding. These options allow users to access a desktop session on the system from a
          remote location.
@@ -118,7 +124,7 @@ class Menu:
            searchfor = "greeter-show-remote-login = false" 
            print ("Remote desktop - disabled") if(searchfor in contents) else print ("Remote desktop - enabled")
        except FileNotFoundError:
-        print ("File /etc/lightdm/lightdm.conf.d/lightdm.conf does not exist. Install LightDM daemon")
+        print ("File /etc/lightdm/lightdm.conf.d/lightdm.conf does not exist. You can install LightDM using 'apt-get install lightdm' ")
 
    def sourcepackedrouting():
         '''
@@ -244,8 +250,7 @@ class Menu:
 
       '''
       Using GSetting command line tool. To check manually use Dconf GUI. 
-      For more details read : 
-      - https://askubuntu.com/questions/22313/what-is-dconf-what-is-its-function-and-how-do-i-use-it
+      For more details read : https://askubuntu.com/questions/22313/what-is-dconf-what-is-its-function-and-how-do-i-use-it
       
       - Auto mounting
       
@@ -287,7 +292,7 @@ class Menu:
       except:
          print (out.stderr)
 
-
+   #need to switch this to subprocess rather than os 
    def read_addons():
       '''
       Find mozilla firefox addons for each profile and display their ability to run on incognito mode
