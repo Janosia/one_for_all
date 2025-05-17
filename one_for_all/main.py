@@ -8,14 +8,14 @@ def display():
    print ("2 : ICMP Echo packets")
    print ("3 : IP Spoofing/ RPF Settings")
    print ("4 : IPv6 disabled")
-   print ("5 : Remote Login enabled")
+   print ("5 : Remote Login enabled (for LightDM  displayer)")
    print ("6 : Source Packed Routing")
    print ("7 : SSH Remote login via Password Details")
    print ("8 : SSH Root Login via Password")
    print ("9 : TCP SYN Settings ")
    print ("10 : Mozilla Firefox Addons")
    print ("11 : AutoMount/AutoPlay/AutoRun settings")
-   print ("0: Exit")
+   print ("0 : Exit")
    print ("=" * 50)
 
 
