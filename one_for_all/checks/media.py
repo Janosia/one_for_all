@@ -1,5 +1,6 @@
 import subprocess
 import os 
+
 def auto_play_devices():
 
       '''
@@ -64,5 +65,5 @@ def lightdm():
            searchfor = "greeter-show-remote-login = false" 
            print ("Remote desktop - disabled") if(searchfor in contents) else print ("Remote desktop - enabled")
        except FileNotFoundError:
-        print ("File /etc/lightdm/lightdm.conf.d/lightdm.conf does not exist. You can install LightDM using 'apt-get install lightdm' ")
+        print ("File /etc/lightdm/lightdm.conf.d/lightdm.conf does not exist. Some other Display Manager is being used. LightDM can be installed using 'apt-get install lightdm' ")
 
