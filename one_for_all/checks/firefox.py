@@ -1,13 +1,21 @@
 import os 
 import json
+import asyncio
+from event_watchers import is_firefox_running
 
-def read_addons():
+async def wait_for_firefox():
+    while not is_firefox_running():
+        await asyncio.sleep(3)  
+    print("Firefox is running!")
+
+async def read_addons(is_firefox_running):
     '''
     Find mozilla firefox addons for each profile and display their ability to run on incognito mode
     
     Path Checked for Profiles: ~/snap/firefox/common/.mozilla/firefox
     
     '''
+    await wait_for_firefox()
     try:
         profiles_stored_path = os.path.expanduser("~/snap/firefox/common/.mozilla/firefox")
         
